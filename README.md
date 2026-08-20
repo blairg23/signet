@@ -13,6 +13,17 @@ poetry run signet --version
 poetry run signet doctor
 ```
 
+## Data setup
+
+Everything under `data/` is user-specific (decks, registry, clients) and
+gitignored. Each subdirectory ships a `*.example.*` starter file -- copy it
+to the real filename and edit it:
+
+```bash
+cp data/decks/identity.example.jsonl data/decks/identity.jsonl
+cp data/decks/typefaces.example.jsonl data/decks/typefaces.jsonl
+```
+
 ## Status
 
 M0 (skeleton) only. See the repo's issue tracker / project board for the
