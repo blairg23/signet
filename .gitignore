@@ -1,0 +1,13 @@
+# --- data/ ---
+# data/decks/ IS committed. Shipped defaults, they define tool behavior.
+# data/registry/ and data/deliverables/ are YOURS and are deliberately NOT
+# committed. They are backed up by whatever syncs this folder.
+data/registry/
+data/deliverables/
+data/clients/
+data/assets/
+
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
