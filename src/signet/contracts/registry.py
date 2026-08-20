@@ -8,7 +8,7 @@ from pydantic import BaseModel, Field
 
 from signet.contracts.territory import IdentityTuple
 
-__all__ = ["IdentityTuple", "StructuralDescriptors", "RegistryEntry"]
+__all__ = ["IdentityTuple", "RegistryEntry", "StructuralDescriptors"]
 
 
 class StructuralDescriptors(BaseModel):
