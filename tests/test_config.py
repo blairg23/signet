@@ -45,3 +45,14 @@ def test_find_config_file_walks_up(tmp_path: Path) -> None:
 
 def test_find_config_file_returns_none_when_absent(tmp_path: Path) -> None:
     assert find_config_file(tmp_path) is None
+
+
+def test_load_config_reads_registry_settings(tmp_path: Path) -> None:
+    config_path = tmp_path / "signet.toml"
+    config_path.write_text(
+        "[registry]\nphash_distance_min = 20\ntuple_overlap_max = 1\n",
+        encoding="utf-8",
+    )
+    config = load_config(config_path)
+    assert config.registry.phash_distance_min == 20
+    assert config.registry.tuple_overlap_max == 1

@@ -20,14 +20,23 @@ def slugify(value: str) -> str:
     return _SLUG_RE.sub("-", value.lower()).strip("-")
 
 
+def _clients_root(config: Config) -> Path:
+    return config.data_dir / "clients"
+
+
 def new_client(client_id: str, *, config: Config) -> Path:
-    """Create clients/<id>/ for a new client and return its path."""
+    """Create data/clients/<id>/ for a new client and return its path."""
     slug = slugify(client_id)
-    client_dir = config.data_dir.parent / "clients" / slug
-    client_dir.mkdir(parents=True, exist_ok=False)
-    return client_dir
+    if not slug:
+        raise ValueError(f"client_id {client_id!r} has no usable slug")
+    client_path = _clients_root(config) / slug
+    client_path.mkdir(parents=True, exist_ok=False)
+    return client_path
 
 
 def client_dir(client_id: str, *, config: Config) -> Path:
     """Return the (possibly non-existent) path for an existing client."""
-    return config.data_dir.parent / "clients" / slugify(client_id)
+    slug = slugify(client_id)
+    if not slug:
+        raise ValueError(f"client_id {client_id!r} has no usable slug")
+    return _clients_root(config) / slug

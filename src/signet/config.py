@@ -24,10 +24,16 @@ class PathsConfig(BaseModel):
     work_dir: str = "~/.local/state/signet/work"
 
 
+class RegistryConfig(BaseModel):
+    phash_distance_min: int = 12
+    tuple_overlap_max: int = 3
+
+
 class Config(BaseModel):
     """Resolved signet configuration, with paths made absolute."""
 
     paths: PathsConfig = Field(default_factory=PathsConfig)
+    registry: RegistryConfig = Field(default_factory=RegistryConfig)
 
     _config_dir: Path = PrivateAttr(default_factory=Path.cwd)
 

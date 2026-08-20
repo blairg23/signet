@@ -1,6 +1,13 @@
 from __future__ import annotations
 
-from signet.contracts import Brief, Critique, CritiqueFinding, RegistryEntry, Territory
+from signet.contracts import (
+    BrandRecord,
+    Brief,
+    Critique,
+    CritiqueFinding,
+    RegistryEntry,
+    Territory,
+)
 from signet.contracts.registry import StructuralDescriptors
 from signet.contracts.territory import IdentityTuple
 
@@ -60,3 +67,9 @@ def test_registry_entry_shape() -> None:
     )
     assert entry.superseded_by is None
     assert entry.descriptors.counters == 2
+
+
+def test_brand_record_matches_marquee_venue_shape() -> None:
+    record = BrandRecord(id="club-moon", name="Club Moon", logo_lock=True)
+    assert record.safe_margin_pct == 5.0
+    assert record.model_dump()["id"] == "club-moon"
