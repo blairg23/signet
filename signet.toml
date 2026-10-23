@@ -1,0 +1,13 @@
+# Signet config. Every path is configurable; nothing is hardcoded in src/.
+
+[paths]
+# Where decks, the registry, clients and deliverables live.
+data_dir = "./data"
+
+# Scratch iterations. Outside the repo, never synced, never committed.
+work_dir = "~/.local/state/signet/work"
+
+[registry]
+# Similarity thresholds for the mark screen. Tune against the test corpus.
+phash_distance_min = 12
+tuple_overlap_max = 3

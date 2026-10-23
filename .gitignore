@@ -1,0 +1,20 @@
+# --- data/ ---
+# Everything under data/ is user-specific: decks, registry, deliverables,
+# clients, assets. None of it is committed except the *.example.* files,
+# which are starter content -- copy one to its real filename and edit it.
+data/decks/*
+data/registry/
+data/deliverables/
+data/clients/
+data/assets/
+!data/decks/*.example.*
+
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+.tox/
+htmlcov/
+coverage.xml
+.coverage*
